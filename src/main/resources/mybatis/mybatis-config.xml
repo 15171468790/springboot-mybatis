@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置别名，简化实体类的书写-->
+    <typeAliases>
+        <typeAlias type="java.lang.Integer" alias="Integer" />
+        <typeAlias type="java.util.HashMap" alias="HashMap" />
+        <typeAlias type="java.lang.String" alias="String" />
+        <typeAlias type="java.util.ArrayList" alias="ArrayList" />
+        <typeAlias type="com.example.springbootmybatis.wang.resposity.FirstResposity" alias="FirstResposity" />
+    </typeAliases>
+</configuration>

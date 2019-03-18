@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springbootmybatis.wang.mapper.FirstResposityMapper" >
+    <!--配置实体类与表关系的映射-->
+    <resultMap id="c_firstResposity" type="FirstResposity">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <result column="userName" property="userName" jdbcType="VARCHAR"></result>
+        <result column="password" property="password" jdbcType="VARCHAR"></result>
+        <result column="user_sex" property="userSex" jdbcType="VARCHAR"></result>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"></result>
+    </resultMap>
+    
+
+    <!--分别实现增删改查-->
+    <insert id="insert" parameterType="FirstResposity">
+        insert into  user(userName,password,user_sex,nick_name)
+        values (#{userName},#{password},#{userSex},#{nickName})
+    </insert>
+    
+    <!--添加sql片段-->
+    <sql id="Base_Column_List">
+        id,userName,password,user_sex,nick_name
+    </sql>
+
+    <select id="getAll" resultMap="c_firstResposity">
+        select
+          <include refid="Base_Column_List"/>
+          from user
+    </select>
+
+    <select id="getOne" resultMap="c_firstResposity"
+            parameterType="java.lang.Long">
+        select
+          <include refid="Base_Column_List"/>
+          from user where id = #{id}
+    </select>
+
+
+    <update id="update" parameterType="FirstResposity">
+        update user
+        set
+            <if test="userName !=null">userName = #{userName},</if>
+            <if test="password !=null">password = #{password},</if>
+            user_sex = #{userSex},
+            nick_name = #{nickName}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from  user
+        where id=#{id}
+    </delete>
+    
+</mapper>
+
